@@ -25,7 +25,7 @@ public interface NetBareListener {
 
     /**
      * Callback method to be invoked when the NetBare service is started. It usual is called after
-     * {@link NetBare#start(NetBareConfig)}.
+     * {@link NetBare#start(error.NonExistentClass, java.util.List)}.
      */
     void onServiceStarted();
 

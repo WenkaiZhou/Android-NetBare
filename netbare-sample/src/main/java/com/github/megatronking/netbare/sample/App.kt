@@ -29,7 +29,7 @@ class App : Application() {
                 JSK_ALIAS, JSK_ALIAS, JSK_ALIAS)
 
         // 初始化NetBare
-        NetBare.get().attachApplication(this, BuildConfig.DEBUG)
+        NetBare.get().attachApplication(this, true)
     }
 
     fun getJSK(): JKS {

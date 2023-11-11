@@ -8,7 +8,6 @@
 
     <application>
         <activity android:name=".ssl.CertificateInstallActivity"
-            android:theme="@style/NetBare"
             android:excludeFromRecents="true"/>
     </application>
 
