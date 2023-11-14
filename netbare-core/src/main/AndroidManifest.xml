@@ -7,8 +7,10 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application>
-        <activity android:name=".ssl.CertificateInstallActivity"
-            android:excludeFromRecents="true"/>
+        <activity
+            android:name=".ssl.CertificateInstallActivity"
+            android:excludeFromRecents="true"
+            android:theme="@style/NetBare" />
     </application>
 
 </manifest>
