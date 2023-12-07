@@ -99,6 +99,7 @@ import java.util.List;
             mLog.w("Unexpected http request headers.");
             return;
         }
+        String host = null;
         for (int i = 1; i < headers.length; i++) {
             String requestHeader = headers[i];
             // Reach the header end
@@ -112,12 +113,22 @@ import java.util.List;
             }
             String name = nameValue[0].trim();
             String value = requestHeader.replaceFirst(nameValue[0] + ": ", "").trim();
+            if (name.equalsIgnoreCase("Host")) {
+                host = value;
+            }
             List<String> header = session.requestHeaders.get(name);
             if (header == null) {
                 header = new ArrayList<>(1);
                 session.requestHeaders.put(name, header);
             }
             header.add(value);
+        }
+
+        // Remove the host in the path to fix the path error problem when using wifi proxy and VPN proxy at the same time.
+        if (host != null) {
+            session.path = session.path
+                    .replaceFirst(session.isHttps ? "https://" : "http://", "")
+                    .replaceFirst(host, "");
         }
     }
 
