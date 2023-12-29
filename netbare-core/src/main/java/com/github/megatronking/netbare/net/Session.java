@@ -38,6 +38,11 @@ public final class Session {
     public final short localPort;
 
     /**
+     * Local vpn IP.
+     */
+    public final int localIp;
+
+    /**
      * Remote server port.
      */
     public final short remotePort;
@@ -82,9 +87,10 @@ public final class Session {
      */
     public int receiveDataSize;
 
-    /* package */ Session(Protocol protocol, short localPort, short remotePort, int remoteIp) {
+    /* package */ Session(Protocol protocol, short localPort, int localIp, short remotePort, int remoteIp) {
         this.protocol = protocol;
         this.localPort = localPort;
+        this.localIp = localIp;
         this.remotePort = remotePort;
         this.remoteIp = remoteIp;
         this.id = UUID.randomUUID().toString();

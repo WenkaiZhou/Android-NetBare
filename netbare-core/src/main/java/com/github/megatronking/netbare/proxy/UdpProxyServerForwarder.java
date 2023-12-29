@@ -73,7 +73,7 @@ public final class UdpProxyServerForwarder implements ProxyServerForwarder {
                 NetBareUtils.convertPort(remotePort));
         NetBareLog.v("udp: %s, size: %d", udpHeader.toString(), udpDataSize);
 
-        Session session = mSessionProvider.ensureQuery(Protocol.UDP, localPort, remotePort, remoteIp);
+        Session session = mSessionProvider.ensureQuery(Protocol.UDP, localPort, localIp, remotePort, remoteIp);
         session.packetIndex++;
 
         try {

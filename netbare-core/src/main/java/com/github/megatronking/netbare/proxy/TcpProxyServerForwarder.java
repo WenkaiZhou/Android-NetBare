@@ -90,7 +90,7 @@ public final class TcpProxyServerForwarder implements ProxyServerForwarder {
 
         if (localPort != mProxyServer.getPort()) {
             // Client requests to server
-            Session session = mSessionProvider.ensureQuery(Protocol.TCP, localPort, remotePort, remoteIp);
+            Session session = mSessionProvider.ensureQuery(Protocol.TCP, localPort, localIp, remotePort, remoteIp);
             session.packetIndex++;
 
             // Forward client request to proxy server.

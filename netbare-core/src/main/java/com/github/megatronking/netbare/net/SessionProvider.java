@@ -67,12 +67,13 @@ public final class SessionProvider {
      *
      * @param protocol IP protocol.
      * @param localPort Local VPN port.
+     * @param localIp Local VPN IP.
      * @param remotePort Remote server port.
      * @param remoteIp Remote server IP.
      * @return An instance of {@link Session}, if the instance not exists, will create a new one.
      */
     @NonNull
-    public Session ensureQuery(Protocol protocol, short localPort, short remotePort, int remoteIp) {
+    public Session ensureQuery(Protocol protocol, short localPort, int localIp, short remotePort, int remoteIp) {
         Session session = mSessions.get(localPort);
         if (session != null) {
             if (session.protocol != protocol || session.localPort != localPort ||
@@ -81,7 +82,7 @@ public final class SessionProvider {
             }
         }
         if (session == null) {
-            session = new Session(protocol, localPort, remotePort, remoteIp);
+            session = new Session(protocol, localPort, localIp, remotePort, remoteIp);
             mSessions.put(localPort, session);
             // Dump uid from /proc/net/
             if (mDumper != null) {

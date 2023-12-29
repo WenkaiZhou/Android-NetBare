@@ -43,7 +43,7 @@ public enum Protocol {
      */
     UDP((byte)17);
 
-    final byte number;
+    public final byte number;
 
     Protocol(byte number) {
         this.number = number;
